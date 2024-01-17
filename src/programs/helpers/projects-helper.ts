@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma'
 
-import { seedPrograms } from "./seed-constants"
+// import { seedPrograms } from "./seed-constants"
 
 import {
   Convenio,
