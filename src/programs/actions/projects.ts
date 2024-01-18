@@ -2,15 +2,13 @@
 
 import prisma from '@/lib/prisma'
 
-export const getProjectsByProgramId = async (
-  idProgram: number
-) => {
+export const getProjectsByProgramId = async (idProgram: number) => {
   try {
     const projects = await prisma.project.findMany({
       where: {
-        idProgram
+        idProgram,
       },
-      orderBy: [{ year: 'desc' }, { title: 'asc' }],
+      orderBy: [{ year: 'desc' }],
     })
     return projects
   } catch (error) {
@@ -21,8 +19,26 @@ export const getProjectsByProgramId = async (
 export const getAllProjects = async () => {
   try {
     const projects = await prisma.project.findMany({
-      orderBy: [{ year: 'desc' }, { title: 'asc' }],
+      orderBy: [{ year: 'desc' }],
     })
+    return projects
+  } catch (error) {
+    throw new Error(`${error}`)
+  }
+}
+
+export const getProjectsByTagId = async (idTag: number) => {
+  try {
+    const projects = await prisma.project.findMany({
+      where: {
+        tags: {
+          some: {
+            id: idTag,
+          },
+        },
+      },
+    })
+
     return projects
   } catch (error) {
     throw new Error(`${error}`)

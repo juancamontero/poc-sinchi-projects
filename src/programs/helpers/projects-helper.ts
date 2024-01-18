@@ -11,26 +11,6 @@ import {
   User,
 } from '@prisma/client'
 
-
-
-
-export const getTagsByProjectId = async (idPost: number): Promise<Tag[]> => {
-  try {
-    const tags = await prisma.tag.findMany({
-      where: {
-        Project: {
-          some: {
-            id: idPost,
-          },
-        },
-      },
-    })
-    return tags
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
-
 export const getRegionsByProjectId = async (
   idPost: number
 ): Promise<Departamento[]> => {
@@ -88,42 +68,6 @@ export const getConveniosByProjectId = async (
   }
 }
 
-
-
-
-export const getProjectsByTagId = async (
-  idTag: number,
-
-): Promise<Project[] | null> => {
-  try {
-    const projects = await prisma.project.findMany({
-      where: {
-        tags: {
-          some: {
-            id: idTag,
-          },
-        },
-      },
-    })
-    return projects
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
-
-export const getTagById = async (id: number): Promise<Tag | null> => {
-  try {
-    const tag = await prisma.tag.findFirst({
-      where: {
-        id,
-      },
-    })
-    return tag
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
-
 export const getProjectsByRegionId = async (
   idRegion: number
 ): Promise<Project[] | null> => {
@@ -158,10 +102,8 @@ export const getRegionById = async (
   }
 }
 
-
-
 export const getProjectsByUserId = async (
-  idUser: number,
+  idUser: number
 ): Promise<Project[] | null> => {
   try {
     const projects = await prisma.project.findMany({

@@ -1,5 +1,4 @@
-// export const metadata = {
-//  title: 'Programas -',
+
 
 import { Sidebar } from '@/components'
 

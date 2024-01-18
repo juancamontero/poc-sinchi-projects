@@ -15,7 +15,7 @@ export const TagsGrid = async ({ idProject }: Props) => {
           <Link
             key={tag.id}
             className='inline-block py-1 px-2 rounded bg-slate-200 text-slate-500 text-xs font-medium tracking-widest cursor-pointer hover:text-blue-400'
-            href={`/programas/tags/${tag.id}`}
+            href={`/programs/tag/${tag.id}`}
           >
             {tag.name}
           </Link>

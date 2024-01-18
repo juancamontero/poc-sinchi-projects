@@ -5,12 +5,8 @@ import { TagsGrid } from './TagsGrid'
 import { IoLinkOutline } from 'react-icons/io5'
 import { GoNote } from 'react-icons/go'
 
-import { RegionsGrid } from './RegionsGrid'
-import { AuthoresGrid } from './AuthoresGrid'
-import { ConveniosGrid } from './ConveniosGrid'
 import { ProgramasGrid } from './ProgramasGrid'
 import { Project } from '@prisma/client'
-
 
 type Props = {
   project: Project
@@ -30,20 +26,16 @@ export const ProjectItem = ({ project }: Props) => {
 
   return (
     <div className='p-4 flex flex-col flex-wrap items-start bg-slate-100 w-full'>
-      {/* Category item */}
-      {/* TODO : Category/Tags Grid */}
       <div className='flex flex-row justify-between w-full mb-2'>
         <h2 className='text-left text-xl font-extrabold text-gray-900'>
           {year}
         </h2>
         <ProjectStateWidget completed={completed} />
       </div>
-      {/* <TagsGrid idProject={id} /> */}
+      <TagsGrid idProject={id} />
 
       {/* TITLE */}
-      <h2 className=' text-xl font-medium text-gray-900 mt-4 mb-2'>
-        {title}
-      </h2>
+      <h2 className=' text-xl font-medium text-gray-900 mt-4 mb-2'>{id}- {title}</h2>
       {/* Description */}
       <p className='text-sm leading-relaxed mb-8'>{description}</p>
 
