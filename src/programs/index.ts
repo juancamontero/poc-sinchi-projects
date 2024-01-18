@@ -5,6 +5,7 @@ export * from './helpers/projects-helper'
 
 export * from './actions/programs'
 export * from './actions/projects'
+export * from './actions/regions'
 export * from './actions/tags'
 
 export { ProjectItem } from './components/ProjectItem'

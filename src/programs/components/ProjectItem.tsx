@@ -7,6 +7,7 @@ import { GoNote } from 'react-icons/go'
 
 import { ProgramasGrid } from './ProgramasGrid'
 import { Project } from '@prisma/client'
+import { RegionsGrid } from './RegionsGrid'
 
 type Props = {
   project: Project
@@ -68,7 +69,7 @@ export const ProjectItem = ({ project }: Props) => {
           )}
         </div>
 
-        {/* <RegionsGrid idProject={id} /> */}
+        <RegionsGrid idProject={id} />
       </div>
 
       {/* autores */}

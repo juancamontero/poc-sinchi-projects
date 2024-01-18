@@ -44,3 +44,20 @@ export const getProjectsByTagId = async (idTag: number) => {
     throw new Error(`${error}`)
   }
 }
+
+export const getProjectsByRegionId = async (idRegion: number) => {
+  try {
+    const projects = await prisma.project.findMany({
+      where: {
+        departamentos: {
+          some: {
+            id: idRegion,
+          },
+        },
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsByRegionId ${error}`)
+  }
+}

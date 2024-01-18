@@ -14,7 +14,7 @@ export const RegionsGrid = async ({ idProject }: Props) => {
       <div className='flex flex-row flex-wrap w-full gap-1 ml-4 justify-end'>
         {regions.map((reg) => (
           <Link
-            href={`/programas/region/${reg.id}`}
+            href={`/programs/region/${reg.id}`}
             key={reg.id}
             className='h-6 inline-block py-1 px-2 rounded bg-slate-300 text-green-900 text-xs font-medium tracking-widest cursor-pointer hover:text-green-400'
           >

@@ -2,33 +2,7 @@ import prisma from '@/lib/prisma'
 
 // import { seedPrograms } from "./seed-constants"
 
-import {
-  Convenio,
-  Departamento,
-  Program,
-  Project,
-  Tag,
-  User,
-} from '@prisma/client'
-
-export const getRegionsByProjectId = async (
-  idPost: number
-): Promise<Departamento[]> => {
-  try {
-    const departamentos = await prisma.departamento.findMany({
-      where: {
-        Project: {
-          some: {
-            id: idPost,
-          },
-        },
-      },
-    })
-    return departamentos
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
+import { Convenio, Project, User } from '@prisma/client'
 
 export const getAuthorsByProjectId = async (
   idPost: number
@@ -63,40 +37,6 @@ export const getConveniosByProjectId = async (
       },
     })
     return convenios
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
-
-export const getProjectsByRegionId = async (
-  idRegion: number
-): Promise<Project[] | null> => {
-  try {
-    const projects = await prisma.project.findMany({
-      where: {
-        departamentos: {
-          some: {
-            id: idRegion,
-          },
-        },
-      },
-    })
-    return projects
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
-
-export const getRegionById = async (
-  id: number
-): Promise<Departamento | null> => {
-  try {
-    const depto = await prisma.departamento.findFirst({
-      where: {
-        id,
-      },
-    })
-    return depto
   } catch (error) {
     throw new Error(`${error}`)
   }
