@@ -8,6 +8,8 @@ import { GoNote } from 'react-icons/go'
 import { ProgramasGrid } from './ProgramasGrid'
 import { Project } from '@prisma/client'
 import { RegionsGrid } from './RegionsGrid'
+import { AuthorsGrid } from './AuthorsGrid'
+import { ConveniosGrid } from './ConveniosGrid'
 
 type Props = {
   project: Project
@@ -73,9 +75,9 @@ export const ProjectItem = ({ project }: Props) => {
       </div>
 
       {/* autores */}
-      {/* <AuthoresGrid idProject={id}  /> */}
+      <AuthorsGrid idProject={id}  />
       <div className='flex flex-row justify-between mt-4 w-full bg-slate-200 p-6'>
-        {/* <ConveniosGrid idProject={id} /> */}
+        <ConveniosGrid idProject={id} />
         <ProgramasGrid idProject={id} />
       </div>
       {/* TODO: Convenio */}

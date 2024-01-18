@@ -61,3 +61,37 @@ export const getProjectsByRegionId = async (idRegion: number) => {
     throw new Error(`getProjectsByRegionId ${error}`)
   }
 }
+
+export const getProjectsByUserId = async (idUser: number) => {
+  try {
+    const projects = await prisma.project.findMany({
+      where: {
+        authors: {
+          some: {
+            id: idUser,
+          },
+        },
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsByUserId ${error}`)
+  }
+}
+
+export const getProjectsByConvenioId = async (idConvenio: number) => {
+  try {
+    const projects = await prisma.project.findMany({
+      where: {
+        convenios: {
+          some: {
+            id: idConvenio,
+          },
+        },
+      },
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getProjectsByConvenioId ${error}`)
+  }
+}

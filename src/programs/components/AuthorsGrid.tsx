@@ -6,7 +6,7 @@ type Props = {
   idProject: number
 }
 
-export const AuthoresGrid = async ({ idProject }: Props) => {
+export const AuthorsGrid = async ({ idProject }: Props) => {
   const authors = await getAuthorsByProjectId(idProject)
   return (
     <>
@@ -15,18 +15,18 @@ export const AuthoresGrid = async ({ idProject }: Props) => {
         <div className='flex flex-row flex-wrap gap-1 items-start'>
           {authors.map((author) => (
             <Link
-              className='inline-flex items-center '
-              href={`/programas/user/${author.id}`}
+              className='inline-flex items-center hover:text-blue-600'
+              href={`/programs/user/${author.id}`}
               key={author.id}
             >
-              <span  className='flex-grow flex flex-col pl-4' >
+              <div className='flex-grow flex flex-col pl-4'>
                 <span className='text-xs font-medium text-gray-900  hover:text-blue-600'>
                   {author.name}
                 </span>
-                <span className='text-xs font-medium text-gray-600  hover:text-blue-200'>
+                <span className='text-xs font-medium text-gray-600  hover:text-blue-600'>
                   {author.email}
                 </span>
-              </span>
+              </div>
             </Link>
           ))}
         </div>

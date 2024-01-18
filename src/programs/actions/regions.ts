@@ -2,13 +2,13 @@
 
 import prisma from '@/lib/prisma'
 
-export const getRegionsByProjectId = async (idPost: number) => {
+export const getRegionsByProjectId = async (idProject: number) => {
   try {
     const departamentos = await prisma.departamento.findMany({
       where: {
         Project: {
           some: {
-            id: idPost,
+            id: idProject,
           },
         },
       },

@@ -16,7 +16,7 @@ export const RegionsGrid = async ({ idProject }: Props) => {
           <Link
             href={`/programs/region/${reg.id}`}
             key={reg.id}
-            className='h-6 inline-block py-1 px-2 rounded bg-slate-300 text-green-900 text-xs font-medium tracking-widest cursor-pointer hover:text-green-400'
+            className='h-6 inline-block py-1 px-2 rounded bg-slate-300 text-green-800 text-xs font-medium tracking-widest cursor-pointer hover:text-lime-50'
           >
             {reg.name}
           </Link>

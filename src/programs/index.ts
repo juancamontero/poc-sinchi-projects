@@ -1,8 +1,9 @@
 
 export *  from './interfaces/Project-interfaces'
 
-export * from './helpers/projects-helper' 
 
+export * from './actions/authors'
+export * from './actions/convenios'
 export * from './actions/programs'
 export * from './actions/projects'
 export * from './actions/regions'
