@@ -1,7 +1,7 @@
-'use client'
+// 'use client'
 
-import Link from 'next/link'
-import { useParams, usePathname } from 'next/navigation'
+
+// import { useParams, usePathname } from 'next/navigation'
 
 interface Props {
   title: string
@@ -10,15 +10,15 @@ interface Props {
 }
 
 export const ProjectListHeader = ({ title, preTitle, email }: Props) => {
-  const params = useParams()
-  const pathName = usePathname()
+  // const params = useParams()
+  // const pathName = usePathname()
 
-  let baseNav = ''
-  if (params.state) {
-    baseNav = pathName.replace(`/${params.state}`, '')
-  } else {
-    baseNav = pathName
-  }
+  // let baseNav = ''
+  // if (params.state) {
+  //   baseNav = pathName.replace(`/${params.state}`, '')
+  // } else {
+  //   baseNav = pathName
+  // }
 
   return (
     <div className='bg-slate-800 w-full p-8 flex flex-col items-start mb-6'>

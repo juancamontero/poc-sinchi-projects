@@ -12,7 +12,7 @@ export const Sidebar = async () => {
       path: '/programs',
     },
   ]
-// ⁄
+// 
   const programs = await getAllPrograms()
 
   programs.forEach((prog) => {

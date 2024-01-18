@@ -11,43 +11,8 @@ import {
   User,
 } from '@prisma/client'
 
-// export const getAllPrograms =  () => {
-export const getAllPrograms = async (): Promise<Program[]> => {
-  try {
-    const programs = await prisma.program.findMany({
-      orderBy: {
-        id: 'asc',
-      },
-    })
-    return programs
-  } catch (error) {
-    return [
-      {
-        id: 0,
-        name: 'error program',
-        slug: 'error',
-        order: 99,
-        description: '',
-        objetivo: '',
-      },
-    ]
-  }
 
-  // return seedPrograms
-}
 
-export const getAllProjects = async (): Promise<Project[] | undefined> => {
-  try {
-    const projects = await prisma.project.findMany({
-      orderBy: {
-        year: 'desc',
-      },
-    })
-    return projects
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
 
 export const getTagsByProjectId = async (idPost: number): Promise<Tag[]> => {
   try {
@@ -123,41 +88,8 @@ export const getConveniosByProjectId = async (
   }
 }
 
-export const getProgramByProjectId = async (
-  idPost: number
-): Promise<Program | null> => {
-  try {
-    const program = await prisma.program.findFirst({
-      where: {
-        Project: {
-          some: {
-            id: idPost,
-          },
-        },
-      },
-    })
-    return program
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
 
-export const getProjectsByProgramId = async (
-  idProgram: number,
-): Promise<Project[] | null> => {
-  try {
-   
 
-    const projects = await prisma.project.findMany({
-      where: {
-        id: idProgram
-      },
-    })
-    return projects
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
 
 export const getProjectsByTagId = async (
   idTag: number,
@@ -226,18 +158,7 @@ export const getRegionById = async (
   }
 }
 
-export const getProgramNameById = async (id: number): Promise<string> => {
-  try {
-    const program = await prisma.program.findFirst({
-      where: {
-        id,
-      },
-    })
-    return program?.name ?? 'program'
-  } catch (error) {
-    throw new Error(`${error}`)
-  }
-}
+
 
 export const getProjectsByUserId = async (
   idUser: number,

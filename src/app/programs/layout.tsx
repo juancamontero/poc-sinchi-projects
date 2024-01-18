@@ -1,7 +1,7 @@
 // export const metadata = {
 //  title: 'Programas -',
 
-import { Sidebar, TopMenu } from '@/components'
+import { Sidebar } from '@/components'
 
 // };
 export default function ProgramsLayout({

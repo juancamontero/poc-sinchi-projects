@@ -3,6 +3,8 @@ export *  from './interfaces/Project-interfaces'
 
 export * from './helpers/projects-helper' 
 
+export * from './actions/programs'
+export * from './actions/projects'
 
 export { ProjectItem } from './components/ProjectItem'
 export { ProjectList } from './components/ProjectList'

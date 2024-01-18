@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -23,48 +20,41 @@ model Program {
 model Project {
   id            Int            @id @default(autoincrement())
   idProgram     Int?
-  program       Program?       @relation(fields: [idProgram], references: [id])
   title         String
   description   String?        @default("")
   completed     Boolean        @default(false)
   year          Int            @default(2022)
-  authors       User[]
   urlResumen    String?        @default("")
   urlProject    String?        @default("")
-  departamentos Departamento[]
-  tags          Tag[]
-  convenios     Convenio[]
+  program       Program?       @relation(fields: [idProgram], references: [id])
+  convenios     Convenio[]     @relation("ConvenioToProject")
+  departamentos Departamento[] @relation("DepartamentoToProject")
+  tags          Tag[]          @relation("ProjectToTag")
+  authors       User[]         @relation("ProjectToUser")
 }
 
 model User {
   id      Int       @id @default(autoincrement())
   name    String
   email   String    @unique
-  Project Project[]
+  Project Project[] @relation("ProjectToUser")
 }
-
-// model Profile {
-//   id     Int    @id @default(autoincrement())
-//   bio    String
-//   user   User   @relation(fields: [userId], references: [id])
-//   userId Int    @unique
-// }
 
 model Departamento {
   id      Int       @id @default(autoincrement())
   cod     String
   name    String    @unique
-  Project Project[]
+  Project Project[] @relation("DepartamentoToProject")
 }
 
 model Tag {
   id      Int       @id @default(autoincrement())
   name    String    @unique
-  Project Project[]
+  Project Project[] @relation("ProjectToTag")
 }
 
 model Convenio {
   id      Int       @id @default(autoincrement())
   name    String    @unique
-  Project Project[]
+  Project Project[] @relation("ConvenioToProject")
 }

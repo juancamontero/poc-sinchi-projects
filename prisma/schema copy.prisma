@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Program {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique @default("")
+  slug        String    @unique
+  order       Int       @default(99)
+  description String?   @default("")
+  objetivo    String?
+  Project     Project[]
+}
+
+model Project {
+  id            Int            @id @default(autoincrement())
+  idProgram     Int?
+  program       Program?       @relation(fields: [idProgram], references: [id])
+  title         String
+  description   String?        @default("")
+  completed     Boolean        @default(false)
+  year          Int            @default(2022)
+  authors       User[]
+  urlResumen    String?        @default("")
+  urlProject    String?        @default("")
+  departamentos Departamento[]
+  tags          Tag[]
+  convenios     Convenio[]
+}
+
+model User {
+  id      Int       @id @default(autoincrement())
+  name    String
+  email   String    @unique
+  Project Project[]
+}
+
+// model Profile {
+//   id     Int    @id @default(autoincrement())
+//   bio    String
+//   user   User   @relation(fields: [userId], references: [id])
+//   userId Int    @unique
+// }
+
+model Departamento {
+  id      Int       @id @default(autoincrement())
+  cod     String
+  name    String    @unique
+  Project Project[]
+}
+
+model Tag {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique
+  Project Project[]
+}
+
+model Convenio {
+  id      Int       @id @default(autoincrement())
+  name    String    @unique
+  Project Project[]
+}

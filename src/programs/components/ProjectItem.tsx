@@ -38,7 +38,7 @@ export const ProjectItem = ({ project }: Props) => {
         </h2>
         <ProjectStateWidget completed={completed} />
       </div>
-      <TagsGrid idProject={id} />
+      {/* <TagsGrid idProject={id} /> */}
 
       {/* TITLE */}
       <h2 className=' text-xl font-medium text-gray-900 mt-4 mb-2'>
@@ -76,13 +76,13 @@ export const ProjectItem = ({ project }: Props) => {
           )}
         </div>
 
-        <RegionsGrid idProject={id} />
+        {/* <RegionsGrid idProject={id} /> */}
       </div>
 
       {/* autores */}
-      <AuthoresGrid idProject={id}  />
+      {/* <AuthoresGrid idProject={id}  /> */}
       <div className='flex flex-row justify-between mt-4 w-full bg-slate-200 p-6'>
-        <ConveniosGrid idProject={id} />
+        {/* <ConveniosGrid idProject={id} /> */}
         <ProgramasGrid idProject={id} />
       </div>
       {/* TODO: Convenio */}
