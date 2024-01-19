@@ -38,7 +38,7 @@ export const ProjectItem = ({ project }: Props) => {
       <TagsGrid idProject={id} />
 
       {/* TITLE */}
-      <h2 className=' text-xl font-medium text-gray-900 mt-4 mb-2'>{id}- {title}</h2>
+      <h2 className=' text-xl font-medium text-gray-900 mt-4 mb-2'>{title}</h2>
       {/* Description */}
       <p className='text-sm leading-relaxed mb-8'>{description}</p>
 
