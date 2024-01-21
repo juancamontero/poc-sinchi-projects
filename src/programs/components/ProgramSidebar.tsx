@@ -1,9 +1,10 @@
-import { SidebarItem, TopBrandWidget } from '.'
-import { getAllPrograms } from '@/programs'
+
+import { ProgramSidebarItem, getAllPrograms } from '@/programs'
 import { GoProjectRoadmap } from 'react-icons/go'
 import Link from 'next/link'
+import { TopBrandWidget } from '@/components'
 
-export const Sidebar = async () => {
+export const ProgramSidebar = async () => {
   let sidebarItems = [
     {
       title: 'Todos los programas',
@@ -17,15 +18,15 @@ export const Sidebar = async () => {
     let newItem = {
       title: prog.name,
       path: `/programs/${prog.id}`,
-      icon: <></>,
+      // icon: <></>,
     }
     sidebarItems.push(newItem)
   })
 
   return (
     <>
-      <aside className='fixed top-0 z-10 ml-[-100%] flex h-screen w-full flex-col justify-between border-r  border-slate-100 bg-white px-0 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]'>
-        <div className=''>
+      <aside className='fixed top-0 z-10 ml-[-100%] flex h-screen w-full flex-col justify-between border-r  px-3 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%] bg-gray-800 border-gray-700'>
+        <div className='w-full'>
           <TopBrandWidget
             title={'SINCHI | Prueba concepto'}
             subTitle='Portal proyectos'
@@ -35,20 +36,20 @@ export const Sidebar = async () => {
 
 
 {/* List starts */}
-          <div className='overflow-y-auto h-svh w-full px-1 sm:px-2 shadow-inner mt-2'>
-            <ul className='space-y-2 tracking-wide mt-1'>
+          <div className='overflow-y-auto h-[72svh] w-full px-1 sm:px-2 shadow-inner mt-2 '>
+            <ul className='mt-8 space-y-2 tracking-wide'> 
               {/* TODO: src/components <SidebarItem /> */}
               {sidebarItems.map((item) => (
-                <SidebarItem key={item.path} {...item} />
+                <ProgramSidebarItem key={item.path} {...item} />
               ))}
               {/* {sidebarItems.map((item) => (
-                <SidebarItem key={item.path} {...item} />
+                <ProgramSidebarItem key={item.path} {...item} />
               ))}
               {sidebarItems.map((item) => (
-                <SidebarItem key={item.path} {...item} />
+                <ProgramSidebarItem key={item.path} {...item} />
               ))}
               {sidebarItems.map((item) => (
-                <SidebarItem key={item.path} {...item} />
+                <ProgramSidebarItem key={item.path} {...item} />
               ))} */}
             </ul>
           </div>

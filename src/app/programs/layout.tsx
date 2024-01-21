@@ -1,6 +1,5 @@
-
-
-import { Sidebar } from '@/components'
+import { TopMenu } from '@/components'
+import { ProgramSidebar } from '@/programs'
 
 // };
 export default function ProgramsLayout({
@@ -9,11 +8,18 @@ export default function ProgramsLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <Sidebar />
-      <div className='relative ml-auto mb-2 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] h-screen '>
-        <div className='px-2 pt-2 overflow-y-scroll overflow-x-scroll h-screen bg-white'>{children}</div>
+    <div>
+      {/* ProgramScreen */}
+      <ProgramSidebar />
+      <div className='ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]'>
+        <TopMenu />
+      {/* ProgramScreen ends */}
+
+        {/* content start */}
+        <div className='p-0 2xl:container'>{children}</div>
+
+        {/* content ends */}
       </div>
-    </>
+    </div>
   )
 }

@@ -1,53 +1,54 @@
-import Image from 'next/image'
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { CiMenuBurger } from 'react-icons/ci'
+import { IoSearchOutline } from 'react-icons/io5'
+
+const menuItems = [
+  { text: 'Programas', path: '/programs' },
+  { text: 'Autores', path: '/users' },
+  { text: 'Departamentos', path: '/regions' },
+  { text: 'Convenios', path: '/convenios' },
+  { text: 'Etiquetas', path: '/tags' },
+]
 
 export const TopMenu = () => {
-  return (
-    <div className='sticky top-0 h-20 border-b bg-white lg:py-2.5 z-50'>
-      <div className='px-6 flex felx-col items-center justify-between space-x-4'>
+  const pathName = usePathname()
 
-        <div className='flex flex-row items-start gap-3'>
-          <Image src='/logo_nav.png' alt='SINCHI Logo' width={40} height={40} />
-          <div>
-            <h5 hidden className='text-2xl text-gray-600 font-medium lg:block'>
-              Proyectos SINCHI
-            </h5>
-            <h6>Prueba de concepto</h6>
-          </div>
+  return (
+    <div className='sticky top-0 h-24 lg:h-16 border-b bg-gray-800 border-gray-700 lg:py-2.5'>
+      {/* menu desktop start */}
+      <div className='flex flex-row lg:items-center flex-nowrap justify-between lg:space-x-4 lg:px-6 2xl:container'>
+        <h5 hidden className='text-2xl font-medium text-gray-300 lg:block'>
+          Criterios
+        </h5>
+
+        {/* Menu hamburguesa start */}
+        <button className='h-24  w-24  border-r lg:hidden text-white'>
+          <CiMenuBurger size={24} className='m-auto' />
+        </button>
+        {/* Menu end */}
+
+        <div className='flex flex-row content-start lg:justify-end flex-wrap w-full lg:gap-4 gap-2 lg:p-0 p-3'>
+          {menuItems.map((item) => (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={
+                pathName.includes(item.path)
+                  ? 'inline-block pt-1 pb-1 px-2 border lg:pb-2 border-gray-600 rounded-md bg-sky-700 text-gray-200 text-xs lg:text-sm font-medium  cursor-pointer hover:text-blue-400 h-7'
+                  : 'inline-block pt-1 pb-1 px-2 border lg:pb-2 border-gray-600 rounded-md bg-gray-700 text-gray-200 text-xs lg:text-sm font-medium  cursor-pointer hover:text-blue-400 h-7'
+              }
+            >
+              {item.text}
+            </Link>
+          ))}
         </div>
 
-        <button className='w-12 h-16 -mr-2 border-r lg:hidden'>
-          <CiMenuBurger size={30} />
-        </button>
-
-        {/* <div className='flex space-x-2'>
-          <div hidden className='md:block'>
-            <div className='relative flex items-center text-gray-400 focus-within:text-cyan-400'>
-              <span className='absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300'>
-                <CiSearch />
-              </span>
-              <input
-                type='search'
-                name='leadingIcon'
-                id='leadingIcon'
-                placeholder='Search here'
-                className='w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition'
-              />
-            </div>
-          </div>
-
-          <button className='flex items-center justify-center w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200 md:hidden'>
-            <CiSearch />
-          </button>
-          <button className='flex items-center justify-center w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200'>
-            <CiChat1 size={25} />
-          </button>
-          <button className='flex items-center justify-center w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200'>
-            <CiBellOn size={25} />
-          </button>
-        </div> */}
-      
+        {/*TODO search bar */}
       </div>
     </div>
   )
 }
+
