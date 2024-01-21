@@ -1,25 +1,25 @@
-import { TopMenu } from '@/components'
-import { ProgramSidebar } from '@/programs'
+
+import { getAllPrograms } from '@/programs'
+import { ProgramScreen } from '@/programs/screens'
 
 // };
-export default function ProgramsLayout({
+export default async function ProgramsLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  // TODO: call the API to get menu items
+  const programs = await getAllPrograms()
+
   return (
     <div>
-      {/* ProgramScreen */}
-      <ProgramSidebar />
-      <div className='ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]'>
-        <TopMenu />
-      {/* ProgramScreen ends */}
-
-        {/* content start */}
-        <div className='p-0 2xl:container'>{children}</div>
-
-        {/* content ends */}
-      </div>
+      <ProgramScreen 
+      programs={programs} 
+      title='Programsa'
+      baseUrl={'/programs'} 
+      baseTitle={'Todos los programas'}>
+        {children}
+      </ProgramScreen>
     </div>
   )
 }
