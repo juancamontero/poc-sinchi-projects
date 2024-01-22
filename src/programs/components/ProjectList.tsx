@@ -1,6 +1,6 @@
 import { Project } from '@prisma/client'
 import { ProjectItem } from '..'
-import { Suspense } from 'react'
+
 
 interface Props {
   projects: Project[]
