@@ -31,3 +31,21 @@ export const getRegionById = async (id: number) => {
     throw new Error(`getRegionsByProjectId ${error}`)
   }
 }
+
+export const getAllRegions = async () => {
+  try {
+    const convenios = await prisma.departamento.findMany({
+      include: {
+        _count: {
+          select: { Project: true },
+        },
+      },
+      orderBy: {
+        Project: { _count: 'desc' },
+      },
+    })
+    return convenios
+  } catch (error) {
+    throw new Error(`getAllRegions ${error}`)
+  }
+}

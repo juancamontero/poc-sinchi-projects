@@ -19,16 +19,33 @@ export const getConveniosByProjectId = async (idPost: number) => {
   }
 }
 
-
 export const getConvenioById = async (id: number) => {
-    try {
-      const convenio = await prisma.convenio.findFirst({
-        where: {
-          id,
-        },
-      })
-      return convenio
-    } catch (error) {
-      throw new Error(`getConvenioById ${error}`)
-    }
+  try {
+    const convenio = await prisma.convenio.findFirst({
+      where: {
+        id,
+      },
+    })
+    return convenio
+  } catch (error) {
+    throw new Error(`getConvenioById ${error}`)
   }
+}
+
+export const getAllConvenios = async () => {
+  try {
+    const convenios = await prisma.convenio.findMany({
+      include: {
+        _count: {
+          select: { Project: true },
+        },
+      },
+      orderBy: {
+        Project: { _count: 'desc' },
+      },
+    })
+    return convenios
+  } catch (error) {
+    throw new Error(`getConveniosByProjectId ${error}`)
+  }
+}

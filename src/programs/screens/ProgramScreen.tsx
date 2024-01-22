@@ -1,18 +1,16 @@
 'use client'
 import { createContext } from 'react'
 
-import { Program } from '@prisma/client'
-
 import { TopMenu } from '@/components'
 import { ProgramSidebar } from '..'
 import { useUi } from './useUi'
+import { SideBarItemProps } from '../components/ProgramSidebar'
 
 interface Props {
   children: React.ReactNode
-  programs: Program[]
+  sidebarItems: SideBarItemProps[] //ready to be shown on sidebar
   title: string // Title of the section, text to be rendered on top of sidebar menu
-  baseUrl: string //The base URL of the layout where tje screen is rendered
-  baseTitle: string //The will be used to render the first sidebar item
+
 }
 
 interface UiContextProps {
@@ -25,20 +23,16 @@ const { Provider } = UiContext
 
 export const ProgramScreen = ({
   children,
-  programs,
+  sidebarItems,
   title,
-  baseUrl,
-  baseTitle,
 }: Props) => {
   const { isHide, toggleMenu } = useUi(true)
   return (
     <>
       <Provider value={{ isHide, toggleMenu }}>
         <ProgramSidebar
-          programs={programs}
+          sidebarItems={sidebarItems}
           title={title}
-          baseUrl={baseUrl}
-          baseTitle={baseTitle}
         />
         <div className='ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]'>
           <TopMenu />
