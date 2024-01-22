@@ -31,3 +31,22 @@ export const getUserById = async (id: number)=> {
       throw new Error(`getUserById ${error}`)
     }
   }
+
+
+export const getAllUsers = async () => {
+  try {
+    const users = await prisma.user.findMany({
+      include: {
+        _count: {
+          select: { Project: true },
+        },
+      },
+      orderBy: {
+        Project: { _count: 'desc' },
+      },
+    })
+    return users
+  } catch (error) {
+    throw new Error(`getAllUsers ${error}`)
+  }
+}

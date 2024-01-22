@@ -105,9 +105,6 @@ export const getAllProjectsWithConvenio = async () => {
         convenios: {
           some: {}
         }
-      },
-      include: {
-        convenios: true
       }
     })
     return projects
@@ -124,13 +121,42 @@ export const getAllProjectsWithRegion = async () => {
         departamentos: {
           some: {}
         }
-      },
-      include: {
-        departamentos: true
       }
     })
     return projects
   } catch (error) {
-    throw new Error(`${error}`)
+    throw new Error(`getAllProjectsWithRegion ${error}`)
+  }
+}
+
+export const getAllProjectsWithTags = async () => {
+  try {
+    const projects = await prisma.project.findMany({
+      orderBy: [{ year: 'desc' }],
+      where: {
+        tags: {
+          some: {}
+        }
+      }
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getAllProjectsWithTags ${error}`)
+  }
+}
+
+export const getAllProjectsWithUsers = async () => {
+  try {
+    const projects = await prisma.project.findMany({
+      orderBy: [{ year: 'desc' }],
+      where: {
+        authors: {
+          some: {}
+        }
+      }
+    })
+    return projects
+  } catch (error) {
+    throw new Error(`getAllProjectsWithUsers ${error}`)
   }
 }

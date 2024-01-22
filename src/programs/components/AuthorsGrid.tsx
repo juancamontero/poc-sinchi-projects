@@ -16,7 +16,7 @@ export const AuthorsGrid = async ({ idProject }: Props) => {
           {authors.map((author) => (
             <Link
               className='inline-flex items-center hover:text-blue-600'
-              href={`/programs/user/${author.id}`}
+              href={`/users/${author.id}`}
               key={author.id}
             >
               <div className='flex-grow flex flex-col pl-4'>

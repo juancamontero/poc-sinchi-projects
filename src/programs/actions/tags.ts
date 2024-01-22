@@ -31,3 +31,21 @@ export const getTagById = async (id: number) => {
     throw new Error(`${error}`)
   }
 }
+
+export const getAllTags = async () => {
+  try {
+    const convenios = await prisma.tag.findMany({
+      include: {
+        _count: {
+          select: { Project: true },
+        },
+      },
+      orderBy: {
+        Project: { _count: 'desc' },
+      },
+    })
+    return convenios
+  } catch (error) {
+    throw new Error(`getAllTags ${error}`)
+  }
+}

@@ -1,4 +1,4 @@
-import { getAllRegions } from '@/programs'
+import { getAllUsers } from '@/programs'
 import { ProgramScreen } from '@/programs/screens'
 
 // };
@@ -8,20 +8,20 @@ export default async function ProgramsLayout({
   children: React.ReactNode
 }) {
   // TODO 1: call the API to get menu items
-  const regions = await getAllRegions()
+  const users = await getAllUsers()
 
   // TODO 2: Build the menu items according  to items received
 
   let sidebarItems = [
     {
-      title: 'Todas los regiones', //This will be the first sidebar item text
-      path: '/regions', //This will be the first sidebar item text and the base for the others items
+      title: 'Todos los autores/investigadores', //This will be the first sidebar item text
+      path: '/users', //This will be the first sidebar item text and the base for the others items
     },
   ]
   // TODO 3: set titles and paths correctly
-  const sectionTitle = 'Regiones'
+  const sectionTitle = 'Autores / Investigadores'
 
-  regions.forEach((item) => {
+  users.forEach((item) => {
     let newItem = {
       title: `${item.name} (${item._count.Project})`,
       path: `${sidebarItems[0].path}/${item.id}`,
