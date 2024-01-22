@@ -1,5 +1,10 @@
 import { LoaderGeneral } from '@/components'
 
 export default function Loading() {
-  return <LoaderGeneral />
+  return (
+ 
+      <LoaderGeneral />
+      // <DashboardSkeleton/>
+
+  )
 }

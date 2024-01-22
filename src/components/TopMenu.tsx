@@ -1,10 +1,11 @@
 'use client'
 
-import { UiContext } from '@/programs/screens/ProgramScreen'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useContext } from 'react'
+import { UiContext } from '@/screens/ProgramScreen'
+
 import { CiMenuBurger } from 'react-icons/ci'
+
+import { TopMenuItem } from './TopMenuItem'
 
 
 const menuItems = [
@@ -16,7 +17,7 @@ const menuItems = [
 ]
 
 export const TopMenu = () => {
-  const pathName = usePathname()
+
   const { toggleMenu } = useContext(UiContext)
 
   return (
@@ -39,17 +40,7 @@ export const TopMenu = () => {
 
         <div className='flex flex-row content-start lg:justify-end flex-wrap w-full lg:gap-4 gap-2 lg:p-0 p-2'>
           {menuItems.map((item) => (
-            <Link
-              key={item.path}
-              href={item.path}
-              className={
-                pathName.includes(item.path)
-                  ? 'inline-block pt-1 pb-1 lg:px-2 px-1 border lg:pb-2 border-gray-600 rounded-md bg-gray-700 text-sky-400 text-xs sm:text-xs lg:text-sm font-medium  cursor-pointer hover:text-sky-600 h-7'
-                  : 'inline-block pt-1 pb-1 lg:px-2 px-1 border lg:pb-2 border-gray-600 rounded-md bg-gray-700 text-gray-200 text-xs sm:text-xs lg:text-sm font-medium  cursor-pointer hover:text-sky-600 h-7'
-              }
-            >
-              {item.text}
-            </Link>
+            <TopMenuItem key={item.path} item={item}/>
           ))}
         </div>
 

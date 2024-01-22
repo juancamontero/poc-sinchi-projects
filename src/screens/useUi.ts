@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react'
+'use client'
+import { useState } from 'react'
 
-interface UseUiArgs {
-  state: boolean
-}
 
 export const useUi = (state: boolean) => {
   const [isHide, setIsHide] = useState(state)

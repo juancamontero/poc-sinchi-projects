@@ -1,5 +1,5 @@
 import { getAllPrograms } from '@/programs'
-import { ProgramScreen } from '@/programs/screens'
+import { ProgramScreen } from '@/screens'
 
 // };
 export default async function ProgramsLayout({

@@ -1,10 +1,11 @@
 'use client'
 import { createContext } from 'react'
-
-import { TopMenu } from '@/components'
-import { ProgramSidebar } from '..'
 import { useUi } from './useUi'
-import { SideBarItemProps } from '../components/ProgramSidebar'
+
+import { Sidebar, TopMenu } from '@/components'
+
+import { SideBarItemProps } from '@/components/SidebarItem'
+
 
 interface Props {
   children: React.ReactNode
@@ -30,7 +31,7 @@ export const ProgramScreen = ({
   return (
     <>
       <Provider value={{ isHide, toggleMenu }}>
-        <ProgramSidebar
+        <Sidebar
           sidebarItems={sidebarItems}
           title={title}
         />
