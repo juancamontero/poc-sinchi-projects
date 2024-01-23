@@ -1,7 +1,8 @@
 import { getAllConvenios } from '@/programs'
 import { ProgramScreen } from '@/screens'
 
-// };
+export const revalidate = 43200 // revalidate at  every 12 hour
+
 export default async function ProgramsLayout({
   children,
 }: {
@@ -16,6 +17,7 @@ export default async function ProgramsLayout({
     {
       title: 'Todos los convenios', //This will be the first sidebar item text
       path: '/convenios', //This will be the first sidebar item text and the base for the others items
+      projectsCount: 0
     },
   ]
   // TODO 3: set titles and paths correctly
@@ -23,8 +25,9 @@ export default async function ProgramsLayout({
 
   convenios.forEach((item) => {
     let newItem = {
-      title: `${item.name} (${item._count.Project})`,
+      title: `${item.name}`,
       path: `${sidebarItems[0].path}/${item.id}`,
+      projectsCount: item._count.Project
       // icon: <></>,
     }
     sidebarItems.push(newItem)

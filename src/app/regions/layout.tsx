@@ -1,8 +1,8 @@
 import { getAllRegions } from '@/programs'
 import { ProgramScreen } from '@/screens'
 
-// };
-export default async function ProgramsLayout({
+export const revalidate = 43200 // revalidate at  every 12 hour
+export default async function RegionsLayout({
   children,
 }: {
   children: React.ReactNode
@@ -16,6 +16,7 @@ export default async function ProgramsLayout({
     {
       title: 'Todas los regiones', //This will be the first sidebar item text
       path: '/regions', //This will be the first sidebar item text and the base for the others items
+      projectsCount: 0
     },
   ]
   // TODO 3: set titles and paths correctly
@@ -23,8 +24,9 @@ export default async function ProgramsLayout({
 
   regions.forEach((item) => {
     let newItem = {
-      title: `${item.name} (${item._count.Project})`,
+      title: `${item.name}`,
       path: `${sidebarItems[0].path}/${item.id}`,
+      projectsCount: item._count.Project
       // icon: <></>,
     }
     sidebarItems.push(newItem)

@@ -2,9 +2,14 @@
 import prisma from '@/lib/prisma'
 import { Program } from '@prisma/client'
 
-export const getAllPrograms = async (): Promise<Program[]> => {
+export const getAllPrograms = async () => {
   try {
     const programs = await prisma.program.findMany({
+      include: {
+        _count: {
+          select: { Project: true },
+        },
+      },
       orderBy: {
         order: 'asc',
       },

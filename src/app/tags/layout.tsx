@@ -1,7 +1,8 @@
 import { getAllTags } from '@/programs'
 import { ProgramScreen } from '@/screens'
 
-// };
+export const revalidate = 43200 // revalidate at  every 12 hour
+
 export default async function ProgramsLayout({
   children,
 }: {
@@ -16,16 +17,17 @@ export default async function ProgramsLayout({
     {
       title: 'Todas las etiquetas', //This will be the first sidebar item text
       path: '/tags', //This will be the first sidebar item text and the base for the others items
+      projectsCount: 0
     },
   ]
   // TODO 3: set titles and paths correctly
-  const sectionTitle = 'Regiones'
+  const sectionTitle = 'Etiquetas'
 
   tags.forEach((item) => {
     let newItem = {
-      title: `${item.name} (${item._count.Project})`,
+      title: `${item.name}`,
       path: `${sidebarItems[0].path}/${item.id}`,
-      // icon: <></>,
+      projectsCount: item._count.Project
     }
     sidebarItems.push(newItem)
   })

@@ -28,13 +28,15 @@ export const ProjectItem = ({ project }: Props) => {
   } = project
 
   return (
-    <div className='p-4 flex flex-col flex-wrap items-start bg-slate-100 w-full'>
+    <div className='lg:p-4  p-2 flex flex-col flex-wrap items-start bg-slate-100 w-full'>
+      {/* year sn completed row  start*/}
       <div className='flex flex-row justify-between w-full mb-2'>
         <h2 className='text-left text-xl font-extrabold text-gray-900'>
           {year}
         </h2>
         <ProjectStateWidget completed={completed} />
       </div>
+      {/* year sn completed row  start*/}
       <TagsGrid idProject={id} />
 
       {/* TITLE */}
@@ -42,6 +44,7 @@ export const ProjectItem = ({ project }: Props) => {
       {/* Description */}
       <p className='text-sm leading-relaxed mb-8'>{description}</p>
 
+      {/* links & regions row start */}
       <div className='flex flex-row justify-between w-full'>
         {/* links */}
         <div className='flex flex-col  items-start flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-3/4'>
@@ -70,13 +73,13 @@ export const ProjectItem = ({ project }: Props) => {
             <></>
           )}
         </div>
-
         <RegionsGrid idProject={id} />
       </div>
+      {/* links & regions row ends */}
 
       {/* autores */}
-      <AuthorsGrid idProject={id}  />
-      <div className='flex flex-row justify-between mt-4 w-full bg-slate-200 p-6'>
+      <AuthorsGrid idProject={id} />
+      <div className='flex lg:flex-row lg:justify-between flex-col justify-start  w-full bg-slate-200 p-2 mt-2'>
         <ConveniosGrid idProject={id} />
         <ProgramasGrid idProject={id} />
       </div>

@@ -45,7 +45,8 @@ export default async function ProjectsByUserPage({ params }: Props) {
       <ProjectListHeader
         title={user?.name ?? ''}
         preTitle='Proyectos con participación de'
-        email={user?.email}
+        subTitle={user?.email}
+        projectsCount={projects.length}
       />
       <ProjectList projects={projects} />
     </div>

@@ -15,7 +15,8 @@ export default async function ProjectsByTagPage({ params }: Props) {
       <div>
         <ProjectListHeader
           title={tag?.name ?? ''}
-          preTitle='Proyectos con palabra clave'
+          preTitle='Proyectos con la etiqueta'
+          projectsCount={projects.length}
         />
         <ProjectList projects={projects} />
       </div>

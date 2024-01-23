@@ -1,18 +1,22 @@
-import { ProjectList , getAllProjectsWithRegion } from '@/programs'
+import {
+  ProjectList,
+  ProjectListHeader,
+  getAllProjectsWithRegion,
+} from '@/programs'
 
 export default async function RegionsPage() {
   const projects = await getAllProjectsWithRegion()
 
   return (
-    <div className='bg-white'>
-      <div className='bg-slate-800 w-full p-8 flex flex-col items-start mb-6'>
-        <h1 className='text-white text-2xl'>
-          Proyectos de todas las <strong>regiones</strong>
-        </h1>
-      </div>
+    <>
+      <ProjectListHeader
+        title='de todos las regiones'
+        preTitle='Proyectos'
+        projectsCount={projects.length ?? 0}
+      />
       {/* {JSON.stringify(projects)} */}
 
-      {projects && <ProjectList projects={projects } />}
-    </div>
+      {projects && <ProjectList projects={projects} />}
+    </>
   )
 }

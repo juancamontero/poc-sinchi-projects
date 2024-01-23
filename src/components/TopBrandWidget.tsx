@@ -9,33 +9,31 @@ interface Props {
 }
 
 export const TopBrandWidget = ({
-  widgetTitle = ' SINCHI | Prueba concepto',
-  subTitle = 'Portal proyectos',
+  widgetTitle = ' SINCHI | proyectos',
+  subTitle = 'Prueba de concepto',
   baseUrl = '/',
-  title = 'Programas',
 }: Props) => {
   return (
     <>
-      <div className='-mx-6 px-6 py-4 flex flex-col gap-1'>
-        <Link href={baseUrl} title='home'>
-          <GoProjectRoadmap size={56} className='mx-auto text-[#943A4A] mb-3' />
-        </Link>
+      <Link
+        href={baseUrl}
+        title='home'
+        className='lg:mx-auto -mx-6 px-6 py-1 lg:p-4 flex flex-row gap-1 lg:justify-start justify-center'
+      >
+        <span className='my-auto'>
+          <GoProjectRoadmap className='mx-auto text-[#943A4A] h-10 w-10 lg:w-14 lg:h-14' />
+        </span>
 
-        <div className=' flex flex-col flex-wrap justify-start items-center'>
-          <h1 className='text-center text-base font-semibold text-gray-200 lg:block ml-1'>
+        <div className=' flex flex-col flex-wrap justify-start items-start py-1'>
+          <h1 className='text-left text-base font-semibold text-gray-200 lg:block ml-1'>
             {widgetTitle}
           </h1>
-          <h2 className='text-center text-xs font-semibold text-gray-300 lg:block ml-1'>
+          <h2 className='text-left  text-xs font-semibold text-gray-300 lg:block ml-1'>
             {subTitle ?? ' '}
           </h2>
         </div>
-      </div>
-      {/* Dynamic title */}
-      <div className='text-center py-1 md:py-2 shadow-md'>
-        <h5 className='text-xl font-semibold text-gray-50 lg:block tracking-wide'>
-          {title}
-        </h5>
-      </div>
+      </Link>
+
     </>
   )
 }

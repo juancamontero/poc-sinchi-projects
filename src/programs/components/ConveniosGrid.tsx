@@ -8,8 +8,8 @@ export const ConveniosGrid = async ({ idProject }: Props) => {
   const convenios = await getConveniosByProjectId(idProject)
   if (!convenios) return <></>
   return (
-    <div className='flex flex-col'>
-      <h6 className='text-sm font-semibold text-slate-700 mb-2'>Convenios</h6>
+    <div className='flex flex-col lg:mb-0 mb-2'>
+      <h6 className='text-sm font-semibold text-slate-700 mb-1 lg:mb-2'>Convenios</h6>
       <div className='flex flex-row flex-wrap w-full gap-1 items-start'>
         {convenios.map((conv) => (
           <Link

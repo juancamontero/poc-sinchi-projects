@@ -11,7 +11,7 @@ import { TopMenuItem } from './TopMenuItem'
 const menuItems = [
   { text: 'Programas', path: '/programs' },
   { text: 'Autores', path: '/users' },
-  { text: 'Departamentos', path: '/regions' },
+  { text: 'Regiones', path: '/regions' },
   { text: 'Convenios', path: '/convenios' },
   { text: 'Etiquetas', path: '/tags' },
 ]
@@ -21,7 +21,7 @@ export const TopMenu = () => {
   const { toggleMenu } = useContext(UiContext)
 
   return (
-    <div className='sticky top-0 h-20 lg:h-16 border-b bg-gray-800 border-gray-700 lg:py-2.5'>
+    <div className='sticky top-0 h-20 lg:h-14 border-b bg-gray-800 border-gray-700 lg:py-2.5'>
       {/* menu desktop start */}
       <div className='flex flex-row lg:my-auto lg:items-center flex-nowrap justify-between lg:space-x-4 lg:px-6 2xl:container'>
         <h5 hidden className='text-2xl font-medium text-gray-300 lg:block'>

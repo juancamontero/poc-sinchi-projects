@@ -4,35 +4,30 @@ import {
     getConvenioById,
     getProjectsByConvenioId,
   } from '@/programs'
+import { Metadata } from 'next'
   
   interface Props {
     params: {
       id: number
     }
   }
-  //   export async function generateStaticParams() {
-  //     const staticProjects = await Array.from({ length: 5 }).map(
-  //       (v, i) => `${i + 1}`
-  //     )
+
   
-  //     return staticProjects.map((id) => ({ id: id }))
-  //   }
+    export async function generateMetadata({ params }: Props): Promise<Metadata> {
+      try {
+        const convenio= await getConvenioById(Number(params.id))
   
-  //   export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  //     try {
-  //       const convenio= await getConvenioById(Number(params.id))
-  
-  //       return {
-  //         title: `Proyectos  - ${convenio?.name ??  ''}`,
-  //         description: `Proyectos bajo convenio ${convenio?.name ??  ''}`,
-  //       }
-  //     } catch (error) {
-  //       return {
-  //         title: `Proyectos convenios`,
-  //         description: `Error : ${error}`,
-  //       }
-  //     }
-  //   }
+        return {
+          title: `Proyectos  - ${convenio?.name ??  ''}`,
+          description: `Proyectos bajo convenio ${convenio?.name ??  ''}`,
+        }
+      } catch (error) {
+        return {
+          title: `Proyectos convenios`,
+          description: `Error : ${error}`,
+        }
+      }
+    }
   
   export default async function ProjectsByConvenioPage({ params }: Props) {
     const { id } = params
@@ -43,7 +38,8 @@ import {
       <div>
         <ProjectListHeader
           title={convenio?.name ?? ''}
-          preTitle='Proyectos bajo convenio'
+          preTitle='Proyectos bajo convenio con'
+          projectsCount={projects.length}
         />
         <ProjectList projects={projects} />
       </div>
