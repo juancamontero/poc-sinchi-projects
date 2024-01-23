@@ -5,6 +5,7 @@ import { UiContext } from '@/screens/ProgramScreen'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import {  IoChevronBackSharp } from 'react-icons/io5'
 
 export interface SideBarItemProps {
   title: string
@@ -23,24 +24,24 @@ export const SidebarItem = ({
   return (
     <>
       {/* Active className: text-white bg-gradient-to-r from-sky-600 to-cyan-400 */}
-      <li className='text-white p-0 m-0'>
+      <li className='text-white p-0 m-0 w-full'>
         <Link
           href={path}
           className={`
             ${
               pathName === path
-                ? `relative flex items-start space-x-4 rounded-s-sm bg-sky-600 px-4 py-3`
-                : 'group flex items-start space-x-4 rounded-s-sm px-4 py-3 text-gray-300 hover:text-blue-400'
+                ? `flex flex-row items-start rounded-s-sm  px-2 py-3 bg-sky-600`
+                : 'flex flex-row items-start rounded-s-sm px-2 py-3 text-gray-300 hover:text-blue-400'
             }`}
           onClick={() => toggleMenu()}
         >
-          {!(pathName === path) && projectsCount > 0 ? (
-            <span className='text-sky-600 font-extrabold text-3xl w-10 lg:mr-1'>{`${projectsCount}`}</span>
+          {projectsCount === 0 ? (
+            <IoChevronBackSharp className='text-sky-600 font-extrabold text-3xl lg:mr-1 w-1/5 text-left'/>
           ) : (
-            <></>
+            <p className='text-sky-600 font-extrabold text-3xl lg:mr-1 w-1/5 text-left'>{projectsCount}</p>
           )}
 
-          <span className='font-medium ml-1'>{title}</span>
+          <p className='font-medium w-4/5 text-left pt-1 ml-2'>{title}</p>
         </Link>
       </li>
     </>
