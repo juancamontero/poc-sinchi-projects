@@ -5,7 +5,8 @@ import { UiContext } from '@/screens/ProgramScreen'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import {  IoChevronBackSharp } from 'react-icons/io5'
+import { IoChevronBackSharp } from 'react-icons/io5'
+import { PiBackspaceBold } from 'react-icons/pi'
 
 export interface SideBarItemProps {
   title: string
@@ -36,9 +37,17 @@ export const SidebarItem = ({
           onClick={() => toggleMenu()}
         >
           {projectsCount === 0 ? (
-            <IoChevronBackSharp className='text-sky-600 font-extrabold text-3xl lg:mr-1 w-1/5 text-left'/>
+            <span
+              className={` font-extrabold text-3xl lg:mr-1 text-left w-1/5 ${
+                pathName === path ? 'text-gray-300':'text-sky-600' 
+              }`}
+            >
+              <PiBackspaceBold className='w-9 h-9'/>
+            </span>
           ) : (
-            <p className='text-sky-600 font-extrabold text-3xl lg:mr-1 w-1/5 text-left'>{projectsCount}</p>
+            <p className='text-sky-600 font-extrabold text-3xl lg:mr-1 w-1/5 text-left'>
+              {projectsCount}
+            </p>
           )}
 
           <p className='font-medium w-4/5 text-left pt-1 ml-2'>{title}</p>

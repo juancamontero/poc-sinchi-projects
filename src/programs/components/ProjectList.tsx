@@ -1,5 +1,6 @@
 import { Project } from '@prisma/client'
 import { ProjectItem } from '..'
+import { NoProjects } from '@/components'
 
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 export const ProjectList = (props: Props) => {
   const { projects } = props
 
-  if (!projects) return (<h1>No hay proyectos disponibles</h1>)
+  if (!projects) return (<NoProjects/>)
 
   return (
     <>

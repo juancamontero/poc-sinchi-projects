@@ -13,7 +13,7 @@ export const ProjectListHeader = ({
   title,
   preTitle,
   subTitle,
-  projectsCount,
+  projectsCount=0,
 }: Props) => {
   // const params = useParams()
   // const pathName = usePathname()
@@ -26,15 +26,19 @@ export const ProjectListHeader = ({
   // }
 
   return (
-    <div className='bg-slate-800 w-full lg:p-8 py-6 px-4 flex flex-row lg:flex-wrap flex-nowrap items-center gap-2 mb-6 lg:justify-start justify-center'>
-      {projectsCount && (
-        <h2 className='text-sky-600 font-extrabold text-5xl lg:text-6xl'>
+    <div className='bg-slate-800 w-full lg:p-8 py-6 flex flex-row lg:flex-wrap flex-nowrap items-center gap-3 mb-6 justify-start px-2'>
+
+
+      {projectsCount > 0 && (
+        <h2 className='text-sky-600 font-extrabold lg:text-7xl  text-6xl pr-1 w-20 text-center lg:w-auto px-2'>
           {projectsCount}
         </h2>
       )}
 
-      <div className='flex flex-col items-start'>
-        {preTitle && <h2 className='text-gray-300 text-sm'>{preTitle}</h2>}
+      <div className='flex flex-col items-start px-1 w-auto'>
+        {preTitle && (
+          <h2 className='text-gray-300 text-sm lg:pr-0 pr-1'>{preTitle}</h2>
+        )}
         <h1 className='text-white text-xl lg:text-2xl'>{title}</h1>
         {subTitle && (
           <a

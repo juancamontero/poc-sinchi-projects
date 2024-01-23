@@ -1,3 +1,4 @@
+import { NoProjects } from '@/components'
 import {
     ProjectList,
     ProjectListHeader,
@@ -41,7 +42,11 @@ import { Metadata } from 'next'
           preTitle='Proyectos bajo convenio con'
           projectsCount={projects.length}
         />
-        <ProjectList projects={projects} />
+        {
+          projects.length === 0
+            ? (<NoProjects/>)
+            : ( <ProjectList projects={projects} />)
+        }
       </div>
     )
   }

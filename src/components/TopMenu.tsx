@@ -31,7 +31,7 @@ export const TopMenu = () => {
         {/* Menu hamburguesa start */}
         {/* lg:hidden */}
         <button 
-          className='h-20  w-20 lg:hidden border-r border-gray-700 text-white font-bold'
+          className='h-20 w-20 lg:hidden border-r border-gray-700 text-white font-bold'
           onClick={()=>toggleMenu()}
         > 
           <CiMenuBurger size={28} className='m-auto' />

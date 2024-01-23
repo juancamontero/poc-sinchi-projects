@@ -1,4 +1,5 @@
 export { LoaderGeneral } from './LoaderGeneral'
+export { NoProjects } from './NoProjects'
 export { PageTitleBar } from './PageTitleBar'
 export { Sidebar } from './Sidebar'
 export { SidebarItem } from './SidebarItem'
