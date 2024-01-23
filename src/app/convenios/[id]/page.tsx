@@ -42,11 +42,7 @@ import { Metadata } from 'next'
           preTitle='Proyectos bajo convenio con'
           projectsCount={projects.length}
         />
-        {
-          projects.length === 0
-            ? (<NoProjects/>)
-            : ( <ProjectList projects={projects} />)
-        }
+        <ProjectList projects={projects} />
       </div>
     )
   }
